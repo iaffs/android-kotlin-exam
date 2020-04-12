@@ -28,10 +28,6 @@ android {
         }
     }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -59,5 +55,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'androidx.cardview:cardview:1.0.0' //  cardview for shadow and rounded corNers
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
