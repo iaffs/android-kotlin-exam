@@ -8,9 +8,9 @@ import no.bloetekjaer.androidkotlinexam.db.Table.COLUMN_LNG
 import no.bloetekjaer.androidkotlinexam.db.Table.COLUMN_NAME
 import no.bloetekjaer.androidkotlinexam.db.Table.COLUMN_PLACE_ID
 import no.bloetekjaer.androidkotlinexam.db.Table.PLACE_TABLE_NAME
-import no.bloetekjaer.model.places.Geometry
-import no.bloetekjaer.model.places.Place
-import no.bloetekjaer.model.places.Property
+import no.bloetekjaer.androidkotlinexam.model.places.Geometry
+import no.bloetekjaer.androidkotlinexam.model.places.Place
+import no.bloetekjaer.androidkotlinexam.model.places.Property
 
 class PlaceDao(context: Context) {
 

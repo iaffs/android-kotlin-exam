@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_place_details.*
 import kotlinx.android.synthetic.main.content_place_details.*
 import no.bloetekjaer.androidkotlinexam.R
-import no.bloetekjaer.model.placedetails.PlaceDetails
+import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetails
 
 class PlaceDetailsActivity : AppCompatActivity() {
 
@@ -31,7 +31,6 @@ class PlaceDetailsActivity : AppCompatActivity() {
             if ( ! placeDetails.banner.isNullOrEmpty() )
                 Picasso.get().load(placeDetails.banner).into(banner)
         }
-
 
         fab.setOnClickListener {
             val intent = Intent(this@PlaceDetailsActivity, PlacesMaps::class.java)

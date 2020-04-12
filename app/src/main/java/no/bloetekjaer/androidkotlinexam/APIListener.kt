@@ -1,7 +1,7 @@
 package no.bloetekjaer.androidkotlinexam
 
-import no.bloetekjaer.model.placedetails.PlaceDetailsEntry
-import no.bloetekjaer.model.places.PlacesEntry
+import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetailsEntry
+import no.bloetekjaer.androidkotlinexam.model.places.PlacesEntry
 
 interface APIListener {
 

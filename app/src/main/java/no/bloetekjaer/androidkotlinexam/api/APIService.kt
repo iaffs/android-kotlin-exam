@@ -1,8 +1,7 @@
 package no.bloetekjaer.androidkotlinexam.api
 
-
-import no.bloetekjaer.model.placedetails.PlaceDetailsEntry
-import no.bloetekjaer.model.places.PlacesEntry
+import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetailsEntry
+import no.bloetekjaer.androidkotlinexam.model.places.PlacesEntry
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

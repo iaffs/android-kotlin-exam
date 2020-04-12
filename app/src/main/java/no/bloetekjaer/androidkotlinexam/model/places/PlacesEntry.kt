@@ -1,4 +1,4 @@
-package no.bloetekjaer.model.places
+package no.bloetekjaer.androidkotlinexam.model.places
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

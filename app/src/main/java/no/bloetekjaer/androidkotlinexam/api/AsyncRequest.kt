@@ -3,8 +3,8 @@ package no.bloetekjaer.androidkotlinexam.api
 import android.os.AsyncTask
 import android.util.Log
 import no.bloetekjaer.androidkotlinexam.APIListener
-import no.bloetekjaer.model.placedetails.PlaceDetailsEntry
-import no.bloetekjaer.model.places.PlacesEntry
+import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetailsEntry
+import no.bloetekjaer.androidkotlinexam.model.places.PlacesEntry
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

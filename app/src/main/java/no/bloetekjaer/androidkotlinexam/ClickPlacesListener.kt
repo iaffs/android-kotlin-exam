@@ -1,6 +1,6 @@
 package no.bloetekjaer.androidkotlinexam
 
-import no.bloetekjaer.model.places.Place
+import no.bloetekjaer.androidkotlinexam.model.places.Place
 
 interface ClickPlacesListener {
 

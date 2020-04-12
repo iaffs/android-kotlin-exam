@@ -7,7 +7,7 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import no.bloetekjaer.model.places.Place
+import no.bloetekjaer.androidkotlinexam.model.places.Place
 import java.util.*
 import kotlin.collections.ArrayList
 

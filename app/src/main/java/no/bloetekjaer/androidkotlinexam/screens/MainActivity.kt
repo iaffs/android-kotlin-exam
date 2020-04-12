@@ -4,27 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import kotlinx.android.synthetic.main.activity_main.*
 import no.bloetekjaer.androidkotlinexam.APIListener
 import no.bloetekjaer.androidkotlinexam.ClickPlacesListener
 import no.bloetekjaer.androidkotlinexam.NoForeignLandPlacesAdapter
 import no.bloetekjaer.androidkotlinexam.R
 import no.bloetekjaer.androidkotlinexam.api.AsyncRequest
 import no.bloetekjaer.androidkotlinexam.db.PlaceDao
-import no.bloetekjaer.model.placedetails.PlaceDetailsEntry
-import no.bloetekjaer.model.places.Place
-import no.bloetekjaer.model.places.PlacesEntry
+import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetailsEntry
+import no.bloetekjaer.androidkotlinexam.model.places.Place
+import no.bloetekjaer.androidkotlinexam.model.places.PlacesEntry
 
 /*
-1.) search view
-2.) Zoom in on map where marker is
 3.) fix some minor changes ex error messages
  */
 
