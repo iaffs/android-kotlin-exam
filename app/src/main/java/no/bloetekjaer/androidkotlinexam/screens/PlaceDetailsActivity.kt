@@ -24,7 +24,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
             if ( ! placeDetails.name.isNullOrEmpty() )
                 placeName.text = placeDetails.name
 
-            if( ! placeDetails.comments.isNullOrEmpty() )
+            if ( ! placeDetails.comments.isNullOrEmpty() )
                 description.text = HtmlCompat.fromHtml(
                 placeDetails.comments!!, HtmlCompat.FROM_HTML_MODE_LEGACY)
 

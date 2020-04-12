@@ -12,7 +12,7 @@ import no.bloetekjaer.model.places.Geometry
 import no.bloetekjaer.model.places.Place
 import no.bloetekjaer.model.places.Property
 
-class PlaceDao(private var context: Context) {
+class PlaceDao(context: Context) {
 
     private var db: DBHandler = DBHandler.getInstance(context)!!
 
@@ -58,7 +58,7 @@ class PlaceDao(private var context: Context) {
         val cursor: Cursor = db.readableDatabase.query(PLACE_TABLE_NAME, null, null, null, null, null, null)
         val placeList = mutableListOf<Place>()
 
-        with(cursor) {
+        with (cursor) {
             while (moveToNext()) {
                 val placeId:   Long   = getLong(getColumnIndexOrThrow(COLUMN_PLACE_ID))
                 val placeName: String = getString(getColumnIndexOrThrow(COLUMN_NAME))

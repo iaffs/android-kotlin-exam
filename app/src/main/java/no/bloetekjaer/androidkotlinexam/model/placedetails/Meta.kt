@@ -9,7 +9,4 @@ class Meta : Serializable {
     @Expose
     var id: String? = null
 
-    @SerializedName("type")
-    @Expose
-    var type: String? = null
 }

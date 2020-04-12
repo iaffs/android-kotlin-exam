@@ -6,7 +6,7 @@ import java.io.Serializable
 
 // Place object with it's attributes
 // API returns a JSON array with Place objects and attributes
-class Place(
+class Place (
     @SerializedName("properties")
     @Expose var properties: Property?, @SerializedName("geometry")
     @Expose var geometry: Geometry?

@@ -2,15 +2,20 @@ package no.bloetekjaer.androidkotlinexam
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.maps.model.LatLng
 import no.bloetekjaer.model.places.Place
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class NoForeignLandPlacesAdapter (private var list: List<Place>, private var listener: ClickPlacesListener) :
-    RecyclerView.Adapter<NoForeignLandPlacesAdapter.PlacesViewHolder>() {
+    RecyclerView.Adapter<NoForeignLandPlacesAdapter.PlacesViewHolder>(), Filterable {
+
+    private var listCopy = list
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,28 +29,40 @@ class NoForeignLandPlacesAdapter (private var list: List<Place>, private var lis
 
     override fun getItemCount(): Int = list.size
 
-    /*override fun getFilter(): Filter {
+    override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(charSequence: CharSequence): FilterResults {
-                val charString = charSequence.toString()
+
+            override fun performFiltering(chars: CharSequence): FilterResults {
+                val tempList = listCopy
+                val filterResults = FilterResults()
                 val filteredList: MutableList<Place> = ArrayList()
-                for (row in list) {
-                    if (row.getProperties()?.name!!.toLowerCase(Locale.getDefault())
-                            .contains(charString.toLowerCase(Locale.getDefault()))) {
-                        filteredList.add(row)
+
+                if(chars.isEmpty()) {
+                    filteredList.addAll(tempList)
+                } else {
+                    val filterPattern = chars.toString().toLowerCase(Locale.getDefault()).trim()
+                    tempList.map { place ->
+                        if(place.properties?.name!!.toLowerCase(Locale.getDefault())
+                                .trim()
+                                .contains(filterPattern)) {
+                            filteredList.add(place)
+                        }
                     }
                 }
-                val filterResults = FilterResults()
+
                 filterResults.values = filteredList
                 return filterResults
             }
 
-            override fun publishResults(c: CharSequence, res: FilterResults) {
-                list = res.values as List<Place>
-                notifyDataSetChanged()
+            override fun publishResults(c: CharSequence, result: FilterResults) {
+                val newList: MutableList<Place>? = result.values as MutableList<Place>
+                if (!newList.isNullOrEmpty()) {
+                    list = newList
+                    notifyDataSetChanged()
+                }
             }
         }
-    }*/
+    }
 
 
     inner class PlacesViewHolder (inflater: LayoutInflater, parent: ViewGroup)
@@ -56,8 +73,6 @@ class NoForeignLandPlacesAdapter (private var list: List<Place>, private var lis
             val mPlaceName: TextView? = itemView.findViewById(R.id.placesName)
             val mIcon: ImageView? = itemView.findViewById(R.id.iconView)
             textPlace = mPlaceName
-
-            // val place: Place = list[adapterPosition]
 
             // Place Name click Listener
             mPlaceName?.setOnClickListener {

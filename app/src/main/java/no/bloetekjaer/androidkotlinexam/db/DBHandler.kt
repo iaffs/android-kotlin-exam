@@ -30,7 +30,6 @@ class DBHandler(context: Context) : SQLiteOpenHelper(
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
     }
 
     companion object {
@@ -49,22 +48,3 @@ class DBHandler(context: Context) : SQLiteOpenHelper(
 
 
 }
-
-/*
- "CREATE TABLE ${PlaceTable.PLACE_TABLE_NAME} " +
-                "(" +
-                "$COLUMN_ID INTEGER PRIMARY KEY, " +
-                " $COLUMN_PLACE_ID $COLUMN_PLACE_ID_TYPE NOT NULL UNIQUE, " +
-                " $COLUMN_NAME $COLUMN_NAME_TYPE, " +
-                " $COLUMN_ICON $COLUMN_ICON_TYPE," +
-                " $COLUMN_LAT $COLUMN_LAT_TYPE," +
-                " $COLUMN_LNG $COLUMN_LNG_TYPE" +
-                " $COLUMN_COUNTRY_CODE $COLUMN_COUNTRY_CODE_TYPE" +
-                " $COLUMN_COMMENTS $COLUMN_COMMENTS_TYPE" +
-                " $COLUMN_STARS $COLUMN_STARS_TYPE" +
-                " $COLUMN_BANNER $COLUMN_BANNER_TYPE" +
-                " $COLUMN_IMAGES_JSON $COLUMN__IMAGES_JSON_TYPE" +
-                ")"
-
-
- */

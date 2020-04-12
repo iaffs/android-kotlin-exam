@@ -3,11 +3,15 @@ package no.bloetekjaer.androidkotlinexam.screens
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.maps.model.LatLng
+
+import kotlinx.android.synthetic.main.activity_main.*
 import no.bloetekjaer.androidkotlinexam.APIListener
 import no.bloetekjaer.androidkotlinexam.ClickPlacesListener
 import no.bloetekjaer.androidkotlinexam.NoForeignLandPlacesAdapter
@@ -19,12 +23,9 @@ import no.bloetekjaer.model.places.Place
 import no.bloetekjaer.model.places.PlacesEntry
 
 /*
-1.) back button on page 4(x)
-2.) fix position on icon in screen 2
-3.) fix new icon look
-4.) icon to map
-6.) fix some minor changes ex error messages
-7.) Splash screen
+1.) search view
+2.) Zoom in on map where marker is
+3.) fix some minor changes ex error messages
  */
 
 class MainActivity : AppCompatActivity(),
@@ -33,6 +34,8 @@ class MainActivity : AppCompatActivity(),
 
     private var asyncReq: AsyncRequest? = null
     private var recyclerView: RecyclerView? = null
+    private var searchView: SearchView? = null
+    private lateinit var adapter: NoForeignLandPlacesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity(),
 
         // check db for many entries
         val places = PlaceDao(this).fetchAll()
-        if(hasMany(places)) {
+        if (hasMany(places)) {
             fillAdapter(places)
             Toast.makeText(this, "getting places from database", Toast.LENGTH_LONG).show()
         } else {
@@ -52,28 +55,42 @@ class MainActivity : AppCompatActivity(),
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        val searchItem = menu.findItem(R.id.actionSearch)
+        searchView = searchItem.actionView as SearchView
+        searchView!!.setOnCloseListener { true }
+        searchView!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
     private fun hasMany(list : List<Place>): Boolean {
         return list.size > 11000
     }
 
     private fun fillAdapter(placeList: List<Place>) {
 
-        //Setting up recyclerView view
-        val adapter =
-            NoForeignLandPlacesAdapter(
-                placeList,
-                this
-            ) // Empty adapter
-        // Fetch places from API
-
-        recyclerView?.layoutManager =
-            LinearLayoutManager(this) // We want the list to be linear & vertical list
-        recyclerView?.adapter = adapter // associating the adapter with recyclerView
-
+        runOnUiThread {
+            // Setting up recyclerView
+            adapter = NoForeignLandPlacesAdapter(placeList, this)
+            recyclerView?.layoutManager =
+                LinearLayoutManager(this) // We want the list to be linear & vertical list
+            recyclerView?.adapter = adapter // associating the adapter with recyclerView
+        }
     }
 
     private fun getAllPlaces() {
-        // Getting all places form API (noforiengland.com)
+        // Getting all places from API (noforeignland.com)
         asyncReq = AsyncRequest()
         asyncReq!!.setParams(true)
         asyncReq!!.setListener(this)

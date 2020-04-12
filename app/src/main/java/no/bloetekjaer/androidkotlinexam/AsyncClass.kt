@@ -1,2 +1,0 @@
-package no.bloetekjaer.androidkotlinexam
-

@@ -42,7 +42,7 @@ class AsyncRequest : AsyncTask<Void, String, Void> () {
                     Log.e("Async", "Throw: $t")
                 }
                 override fun onResponse(call: Call<PlacesEntry>, response: Response<PlacesEntry>) {
-                    if(response.isSuccessful) response.body()?.let {
+                    if (response.isSuccessful) response.body()?.let {
                         apiListener?.onPlacesSuccess(it)
                     }
                     else apiListener?.onPlacesError()
@@ -53,10 +53,12 @@ class AsyncRequest : AsyncTask<Void, String, Void> () {
             Log.d("AsyncRequest", "Getting PLACE DETAILS: " + placeId!!)
             val call = service.getPlaceDetails(placeId!!)
             call.enqueue(object : Callback<PlaceDetailsEntry> {
+
                 override fun onFailure(call: Call<PlaceDetailsEntry>, t: Throwable) {
                     apiListener?.onDetailsError()
                     Log.e("Async", "Throw: $t")
                 }
+
                 override fun onResponse(call: Call<PlaceDetailsEntry>, response: Response<PlaceDetailsEntry>) {
                     if (response.isSuccessful) response.body()?.let {
                         apiListener?.onDetailsSuccess(it)

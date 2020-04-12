@@ -21,6 +21,4 @@ object Table : BaseColumns {
         // Longitude column (REAL)
         const val COLUMN_LNG  = "longitude"
         const val COLUMN_LNG_TYPE = "REAL"
-
-        // Ba
 }
