@@ -7,7 +7,7 @@
     <string name="previous">Previous</string>
     <string name="title_activity_places_maps">PlacesMaps</string>
     <string name="details_text">details_text</string>
-    <string name="bannerImage">bannerImage</string>
+    <string name="banner_image">bannerImage</string>
     <string name="sailors_guide">Sailor\'s Guide</string>
-    <string name="appimage">appImage</string>
+    <string name="appImage">appImage</string>
 </resources>
