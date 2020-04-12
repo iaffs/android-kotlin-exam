@@ -49,8 +49,11 @@ class PlacesMaps : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Adds marker on chosen lat and long<
+        // Adds marker on chosen lat and long
         mMap.addMarker(MarkerOptions().position(latLng))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+
+        // Zooms in on marker
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.0f), 2500, null)
     }
 }
