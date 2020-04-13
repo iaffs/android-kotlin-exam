@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Kotlin Exam</string>
+    <string name="app_name">Sailor\'s Guide</string>
     <string name="places_name">PlaceName</string>
     <string name="maps_icon">MapsIcon</string>
     <string name="title_activity_place_details">PlaceDetailsActivity</string>

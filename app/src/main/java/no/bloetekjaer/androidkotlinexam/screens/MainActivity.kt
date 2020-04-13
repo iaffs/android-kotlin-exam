@@ -19,9 +19,6 @@ import no.bloetekjaer.androidkotlinexam.model.placedetails.PlaceDetailsEntry
 import no.bloetekjaer.androidkotlinexam.model.places.Place
 import no.bloetekjaer.androidkotlinexam.model.places.PlacesEntry
 
-/*
-3.) fix some minor changes ex error messages
- */
 
 class MainActivity : AppCompatActivity(),
     APIListener,
@@ -41,11 +38,11 @@ class MainActivity : AppCompatActivity(),
         val places = PlaceDao(this).fetchAll()
         if (hasMany(places)) {
             fillAdapter(places)
-            Toast.makeText(this, "getting places from database", Toast.LENGTH_LONG).show()
+            // Toast.makeText(this, "getting places from database", Toast.LENGTH_LONG).show()
         } else {
             // get places from api
             getAllPlaces()
-            Toast.makeText(this, "getting places from API", Toast.LENGTH_LONG).show()
+            // Toast.makeText(this, "getting places from API", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -103,12 +100,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onPlacesSuccess(placesEntry: PlacesEntry) {
-        Toast.makeText(
-            this@MainActivity,
-            "Places success ${placesEntry.placeList?.size}",
-            Toast.LENGTH_LONG
-        ).show()
-
         placesEntry.placeList?.let { fillAdapter(it) }
 
        val placeDao = PlaceDao(applicationContext)
@@ -128,7 +119,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onDetailsError() {
-        Toast.makeText(this@MainActivity, "Places details success", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@MainActivity, "Places details error", Toast.LENGTH_LONG).show()
     }
 
     override fun onClickPlaceName(place: Place) {

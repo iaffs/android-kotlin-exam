@@ -37,12 +37,12 @@ class NoForeignLandPlacesAdapter (private var list: List<Place>, private var lis
                 val filterResults = FilterResults()
                 val filteredList: MutableList<Place> = ArrayList()
 
-                if(chars.isEmpty()) {
+                if (chars.isEmpty()) {
                     filteredList.addAll(tempList)
                 } else {
                     val filterPattern = chars.toString().toLowerCase(Locale.getDefault()).trim()
                     tempList.map { place ->
-                        if(place.properties?.name!!.toLowerCase(Locale.getDefault())
+                        if (place.properties?.name!!.toLowerCase(Locale.getDefault())
                                 .trim()
                                 .contains(filterPattern)) {
                             filteredList.add(place)
